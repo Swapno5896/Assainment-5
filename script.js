@@ -20,7 +20,10 @@ const fetcha=(link,inputValue)=>{
     .then(res=>res.json())
     .then(data=>{
         if(data.meals==null){
+            container.innerHTML =null
+            document.getElementById('detail').innerHTML=null
             alert(`Sorry, we don't have ${inputValue}`)
+          
         }
         else{
             container.innerHTML =null

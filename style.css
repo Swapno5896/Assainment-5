@@ -1,0 +1,15 @@
+#searchArea{
+    text-align: center;
+}
+#container{
+    margin: auto;
+    width: 70%;
+    height: 30%;
+    border: 3px solid red;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+grid-gap: 20%;
+}
+#container img{
+    width: 100%;
+}

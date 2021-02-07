@@ -34,6 +34,7 @@ text-align: center;
 }
 
 #notFound{
+    display: none;
    margin: auto;
     width: 500px;
 

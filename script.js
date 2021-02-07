@@ -2,7 +2,8 @@
 
 const container = document.getElementById('container')
 
-const startSearch =()=>{
+                document.getElementById('detail').innerHTML=null
+const startSearch =()=>{  
     const inputValue = document.getElementById(`inputValue`).value
     if(inputValue.length<2){
         fetchLink=`https://www.themealdb.com/api/json/v1/1/search.php?f=${inputValue}`;
@@ -21,19 +22,20 @@ const fetcha=(link,inputValue)=>{
     .then(data=>{
         if(data.meals==null){
             container.innerHTML =null
-            document.getElementById('detail').innerHTML=null
+         document.getElementById('detail').innerHTML=null
             // alert(`Sorry, we don't have ${inputValue}`)
-            document.getElementById('notFound').innerHTML=`<img src="not found.png" alt="">
-
+            
+            document.getElementById('notFound').innerHTML=`
+            <h2>Nothing found</h2>
             <h2>Please search something else</h2>
             `
+            document.getElementById('notFound').style.display='block'
           
         }
         else{
             container.innerHTML =null
+            document.getElementById('notFound').style.display='none'
             data.meals.forEach(item => {
-                
-             
                 const newDiv = document.createElement('div')
                 newDiv.className='newDiv'
                 const hemlTem = `

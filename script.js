@@ -7,17 +7,18 @@ const startSearch =()=>{
     if(inputValue.length<2){
 
         fetchLink=`https://www.themealdb.com/api/json/v1/1/search.php?f=${inputValue}`;
-        fetcha(fetchLink);
+        fetcha(fetchLink,inputValue);
     }
     else{
         fetchLink=`https://www.themealdb.com/api/json/v1/1/search.php?s=${inputValue}`;
-        fetcha(fetchLink);
+        fetcha(fetchLink,inputValue);
     }
 }
 
-const fetcha=link=>{
+const fetcha=(link,inputValue)=>{
     fetch(fetchLink)
     .then(res=>res.json())
+    .then(Error=>alert(`Sorry, We don't have ${inputValue}`))
     .then(data=>{ 
     for(let i =0; i <data.meals.length; i++){
         const value = data.meals[i]

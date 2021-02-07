@@ -32,3 +32,13 @@ text-align: center;
 .newDiv img{
     width: 300px;
 }
+
+#notFound{
+   margin: auto;
+    width: 500px;
+
+}
+#notFound img{
+  width: 100%;
+  
+}

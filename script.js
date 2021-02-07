@@ -22,7 +22,11 @@ const fetcha=(link,inputValue)=>{
         if(data.meals==null){
             container.innerHTML =null
             document.getElementById('detail').innerHTML=null
-            alert(`Sorry, we don't have ${inputValue}`)
+            // alert(`Sorry, we don't have ${inputValue}`)
+            document.getElementById('notFound').innerHTML=`<img src="not found.png" alt="">
+
+            <h2>Please search something else</h2>
+            `
           
         }
         else{

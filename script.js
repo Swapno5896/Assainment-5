@@ -5,8 +5,8 @@ const container = document.getElementById('container')
 const startSearch =()=>{
     const inputValue = document.getElementById(`inputValue`).value
     if(inputValue.length<2){
-
         fetchLink=`https://www.themealdb.com/api/json/v1/1/search.php?f=${inputValue}`;
+ 
         fetcha(fetchLink,inputValue);
     }
     else{
@@ -18,19 +18,28 @@ const startSearch =()=>{
 const fetcha=(link,inputValue)=>{
     fetch(fetchLink)
     .then(res=>res.json())
-    .catch(err=>(alert(`Sorry, We don't have ${inputValue}`)))
     .then(data=>{
-      data.meals.forEach(item => {
-          const newDiv = document.createElement('div')
-          newDiv.className='newDiv'
-          const hemlTem = `
-          <div onclick="detail(${item.idMeal})">
-          <img src="${item.strMealThumb}" alt="">
-          <h3>${item.strMeal}</h3>
-          </div>`
-          newDiv.innerHTML = hemlTem;
-          container.appendChild(newDiv)
-      });
+        if(data.meals==null){
+            alert(`Sorry, we don't have ${inputValue}`)
+        }
+        else{
+            container.innerHTML =null
+            data.meals.forEach(item => {
+                
+                console.log(item);
+                const newDiv = document.createElement('div')
+                newDiv.className='newDiv'
+                const hemlTem = `
+                <div onclick="detail(${item.idMeal})">
+                <img src="${item.strMealThumb}" alt="">
+                <h3>${item.strMeal}</h3>
+                </div>`
+                newDiv.innerHTML = hemlTem;
+                
+                container.appendChild(newDiv)
+            });
+        }
+  
   })
 
 }
@@ -47,15 +56,15 @@ const detail =id=>{
     const detail = document.getElementById('detail')
     const newDetail = document.createElement('div')
     const htmlTem = `
-    <img src="${item.strMealThumb}" alt="">
-    <h2>${item.strMeal}</h2>
-    <h3>Ingredients</h3>
-    <ul id="ul"></ul>   `
+                    <img src="${item.strMealThumb}" alt="">
+                    <h2>${item.strMeal}</h2>
+                    <h3>Ingredients</h3>
+                    <ul id="ul"></ul> 
+                      `
     newDetail.innerHTML= htmlTem;
     detail.appendChild(newDetail)
     for (let i = 1; i < 15; i++) {
         let element = i;
-    
         let ingredients =item['strIngredient'+i]
         if(!(ingredients==null || ingredients=='')){
             const ul = document.getElementById('ul')

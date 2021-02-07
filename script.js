@@ -55,6 +55,10 @@ fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
     const htmlTem = `
     <img src="${value.strMealThumb}" alt="">
     <h2>${value.strMeal}</h2>
+    
+
+<h3>Ingredients</h3>
+
     <ul id="ul"></ul>
     `
     newDetail.innerHTML= htmlTem;

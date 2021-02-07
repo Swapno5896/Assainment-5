@@ -2,14 +2,19 @@
     text-align: center;
 }
 #container{
-    margin: auto;
-    width: 70%;
-    height: 30%;
-    border: 3px solid red;
     display: grid;
-    grid-template-columns: repeat(2,1fr);
-grid-gap: 20%;
+    grid-template-columns: repeat(3,1fr);
+grid-row-gap: 50px;
+grid-column-gap: 190px;
+text-align: center;
 }
-#container img{
-    width: 100%;
+
+.newDiv{
+    box-shadow: 5px 10px 20px #6fa05c;
+    border: 3px solid red;
+    height: 400px;
+    
+}
+.newDiv img{
+    width: 300px;
 }

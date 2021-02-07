@@ -1,6 +1,17 @@
 #searchArea{
     text-align: center;
 }
+#searchArea input{
+    width: 200px;
+    height: 30px;
+font-size: 20px;
+}
+#searchArea button{
+    width: 100px;
+    height: 35px;
+font-size: 20px;
+color: greenyellow;
+}
 #container{
     display: grid;
     grid-template-columns: repeat(3,1fr);
@@ -8,6 +19,7 @@ grid-row-gap: 50px;
 grid-column-gap: 190px;
 text-align: center;
 }
+
 
 .newDiv{
     box-shadow: 5px 10px 20px #6fa05c;

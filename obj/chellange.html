@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        #container{
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+        }
+        #lists{
+            height: 700px;
+            overflow: scroll;
+        }
+        #detail{
+            background-color: rgb(177, 161, 161);
+        }
+    </style>
+    <div id="container">
+        <ul id="lists">
+
+        </ul>
+        <div id="detail">
+
+        </div>
+    </div>
+
+
+ 
+
+
+<script>
+    fetch('https://restcountries.eu/rest/v2/all')
+    .then(res=>res.json())
+    .then(item=>{
+  
+        const ul = document.getElementById('lists')
+        item.forEach( da=> {
+            //idea no 1
+        //   const li =   document.createElement('li')
+        //     li.innerText = da.name
+        //     ul.appendChild(li)
+const htmlTem = `
+<li onclick="detail('${da.name}')">${da.name}</li>`
+const li =   document.createElement('li')
+li.innerHTML=htmlTem
+ul.appendChild(li)
+      console.log(da.name);
+            
+        });
+    })
+
+    function detail(name){
+        fetch('')
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

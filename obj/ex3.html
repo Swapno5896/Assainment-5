@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>countries</title>
+</head>
+<body>
+
+   
+     <div id="paerntNode" class="row row-cols-1 row-cols-md-3 g-4">
+       
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    
+    fetch('https://restcountries.eu/rest/v2/all')
+    .then(res=>res.json())
+    .then(data=>{
+        displayData(data)
+    })
+
+    function displayData(data){
+        for (let i = 0; i < data.length; i++) {
+            const item1 = data[i];
+            // console.log(item1.flag);
+         let temp =(` 
+         <div class="col">
+            <div class="card">
+            <img src="${item1.flag}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">${item1.name}</h5>
+                <p class="card-text">It's capital is ${item1.capital}</p>
+            </div>
+            </div>
+        </div>`)
+        document.getElementById('paerntNode').innerHTML += temp
+      
+            
+        }
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</body>
+</html>

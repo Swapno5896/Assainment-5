@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>countries name</title>
+</head>
+<body>
+    
+
+
+<div id="countries">
+
+</div>
+
+
+<div id="specifucCountry"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  
+    fetch('https://restcountries.eu/rest/v2/all')
+    .then(res=>res.json())
+    .then(countries=>{
+        displayCouuntries(countries)
+    })
+
+  
+    
+    // function displayCouuntries(countries){
+    //     const countriesDiv = document.getElementById('countries')
+    //     for (let i = 0; i < countries.length; i++) {
+    //         const country = countries[i];
+    //         const countryDiv = document.createElement('div')
+    //         countryDiv.className = 'country'
+    //         const countryInfo = `<h3 class="country-name">${country.name}</h3>
+    //                             <p>${country.capital}</p>`
+    //                             countryDiv.innerHTML = countryInfo;
+
+    //         countriesDiv.appendChild(countryDiv)
+            // const h3 = document.createElement('h3')
+            // h3.innerText = country.name
+            // const p = document.createElement('p')
+            // p.innerText = country.capital
+            // countryDiv.appendChild(h3)
+            // countryDiv.appendChild(p)
+            // countriesDiv.appendChild(countryDiv)
+            
+
+
+    //     }
+    // }
+
+
+//for each
+function displayCouuntries(countries){
+    const countriesDiv = document.getElementById('countries')
+countries.forEach(country => {
+    const countryDiv = document.createElement('div')
+            countryDiv.className = 'country'
+            const countryInfo = `<h3 class="country-name">${country.name}</h3>
+                                <p>${country.capital}</p>
+                                <button onclick="showDetail('${country.name}')">Detail</button>
+                                `
+                                countryDiv.innerHTML = countryInfo;
+
+            countriesDiv.appendChild(countryDiv)
+    
+});}
+//show detail
+function showDetail(name){
+    document.getElementById('countries').style.display="none"
+fetch(`https://restcountries.eu/rest/v2/name/${name}`)
+.then(res=>res.json())
+.then(data=>{
+  const specifucCountryDiv = document.getElementById('specifucCountry')
+  const scountryDiv = document.createElement('div')
+  scountryDiv.className='scountry'
+            const scountryInfo = `<h3 >${data[0].name}</h3>
+                                <p>hallo</p>
+                                <img src="${data[0].flag}" alt="">
+                                <button onclick="goBack()" >Go Back</button>
+                                `
+                                scountryDiv.innerHTML = scountryInfo;
+
+                                specifucCountryDiv.appendChild(scountryDiv)
+
+    console.log(data);
+})
+// console.log(`https://restcountries.eu/rest/v2/name/${name}`);
+
+}
+
+
+function goBack(){
+    
+    document.getElementById('specifucCountry').style.display="none"
+}
+</script>
+<style>
+    #countries{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-gap: 75px 50px;
+    }
+   .country{
+     
+       border: 3px solid gray;
+       text-align: center;
+   } 
+   .country:hover{
+       background-color: rgb(211, 199, 199);
+   }
+   
+ /* style to specific country */
+.scountry{
+    border: 3px solid gainsboro;
+    text-align: center;
+}
+
+</style>
+</body>
+</html>
